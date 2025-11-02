@@ -15,12 +15,11 @@ export default function Navbar() {
             </div>
             <div>
               <h1 className="text-lg font-semibold">Student Management</h1>
-              
             </div>
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-4">
             <Link to="/" className="text-gray-700 hover:text-indigo-600">Home</Link>
             <Link to="/about" className="text-gray-700 hover:text-indigo-600">About</Link>
             <Link to="/help" className="text-gray-700 hover:text-indigo-600">Help</Link>
@@ -30,20 +29,22 @@ export default function Navbar() {
               to="/login"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-indigo-600 text-white font-medium shadow hover:brightness-105 transition"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A12.042 12.042 0 0112 15c2.386 0 4.6.673 6.536 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
               Login
             </Link>
 
-            {/* Registration Button (right beside login) */}
+            {/* Admin Dashboard Button */}
+            <Link
+              to="/dashboard"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-purple-600 text-white font-medium shadow hover:brightness-105 transition"
+            >
+              Admin
+            </Link>
+
+            {/* Registration Button */}
             <Link
               to="/registration"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-green-600 text-white font-medium shadow hover:brightness-105 transition"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
               Registration
             </Link>
           </nav>
@@ -72,27 +73,13 @@ export default function Navbar() {
             <Link to="/" onClick={() => setOpen(false)} className="py-2">Home</Link>
             <Link to="/about" onClick={() => setOpen(false)} className="py-2">About</Link>
             <Link to="/help" onClick={() => setOpen(false)} className="py-2">Help</Link>
-
-            {/* Login Button */}
-            <Link
-              to="/login"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-indigo-600 text-white font-medium"
-            >
-              Login
-            </Link>
-
-            {/* Registration Button */}
-            <Link
-              to="/registration"
-              onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-green-600 text-white font-medium"
-            >
-              Registration
-            </Link>
+            <Link to="/login" onClick={() => setOpen(false)} className="mt-2 px-4 py-2 rounded-md bg-indigo-600 text-white text-center">Login</Link>
+            <Link to="/dashboard" onClick={() => setOpen(false)} className="px-4 py-2 rounded-md bg-purple-600 text-white text-center">Admin</Link>
+            <Link to="/registration" onClick={() => setOpen(false)} className="px-4 py-2 rounded-md bg-green-600 text-white text-center">Registration</Link>
           </div>
         </div>
       )}
     </header>
   );
 }
+
