@@ -41,7 +41,8 @@ export default function Home() {
 
       {/* Footer / Credit */}
       <footer className="mt-8 text-center text-gray-500 text-sm">
-        &copy; 2025 Student Management System — Program developed by <span className="font-semibold">Waqas Hussain</span>
+        &copy; 2025 Student Management System — Program developed by <span className="font-semibold">Waqas Hussain <br/>Contact# 03153048734</span>
+        
       </footer>
     </section>
   );
