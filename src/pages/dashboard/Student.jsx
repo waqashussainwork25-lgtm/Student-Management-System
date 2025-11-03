@@ -155,46 +155,223 @@ export default function StudentManagement() {
       </div>
 
       {/* Student Table */}
-      <div className="overflow-x-auto bg-white shadow-lg rounded-2xl">
-        <table className="min-w-full border text-sm text-left">
-          <thead className="bg-indigo-100">
-            <tr>
-              {["Name","Father Name","Address","Mobile","Course","Age","Province","District","Division","Gender","Actions"].map(col => (
-                <th key={col} className="px-3 py-2">{col}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {filteredStudents.map(student => (
-              <tr key={student.id} className="hover:bg-indigo-50">
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.name} onChange={(e)=>handleEditChange("name", e.target.value)} className="border p-1 rounded w-full"/> : student.name}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.fatherName} onChange={(e)=>handleEditChange("fatherName", e.target.value)} className="border p-1 rounded w-full"/> : student.fatherName}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.address} onChange={(e)=>handleEditChange("address", e.target.value)} className="border p-1 rounded w-full"/> : student.address}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.mobile} onChange={(e)=>handleEditChange("mobile", e.target.value)} className="border p-1 rounded w-full"/> : student.mobile}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.course} onChange={(e)=>handleEditChange("course", e.target.value)} className="border p-1 rounded w-full"/> : student.course}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="number" value={editData.age} onChange={(e)=>handleEditChange("age", e.target.value)} className="border p-1 rounded w-full"/> : student.age}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.province} onChange={(e)=>handleEditChange("province", e.target.value)} className="border p-1 rounded w-full"/> : student.province}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.district} onChange={(e)=>handleEditChange("district", e.target.value)} className="border p-1 rounded w-full"/> : student.district}</td>
-                <td className="px-3 py-1">{editId === student.id ? <input type="text" value={editData.division} onChange={(e)=>handleEditChange("division", e.target.value)} className="border p-1 rounded w-full"/> : student.division}</td>
-                <td className="px-3 py-1">{editId === student.id ? <select value={editData.gender} onChange={(e)=>handleEditChange("gender", e.target.value)} className="border p-1 rounded w-full"><option>Male</option><option>Female</option></select> : student.gender}</td>
-                <td className="px-3 py-1 flex gap-2">
-                  {editId === student.id ? (
-                    <>
-                      <button onClick={saveEdit} className="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Save</button>
-                      <button onClick={cancelEdit} className="bg-gray-400 text-white px-2 py-1 rounded hover:bg-gray-500">Cancel</button>
-                    </>
-                  ) : (
-                    <>
-                      <button onClick={()=>startEdit(student)} className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">Edit</button>
-                      <button onClick={()=>handleDelete(student.id)} className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700">Delete</button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+     {/* Student Table */}
+<div className="overflow-x-auto bg-white shadow-lg rounded-2xl">
+  <table className="min-w-full border text-sm text-left">
+    <thead className="bg-indigo-100">
+      <tr>
+        {[
+          "Reg. No",
+          "Name",
+          "Father Name",
+          "CNIC",
+          "Address",
+          "Mobile",
+          "Course",
+          "Campus",
+          "Age",
+          "Gender",
+          "City",
+          "Province",
+          "Actions",
+        ].map((col) => (
+          <th key={col} className="px-3 py-2">
+            {col}
+          </th>
+        ))}
+      </tr>
+    </thead>
+
+    <tbody className="divide-y divide-gray-100">
+      {filteredStudents.map((student) => (
+        <tr key={student.id} className="hover:bg-indigo-50">
+          <td className="px-3 py-1">{student.registrationNo}</td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.name}
+                onChange={(e) => handleEditChange("name", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.name
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.fatherName}
+                onChange={(e) =>
+                  handleEditChange("fatherName", e.target.value)
+                }
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.fatherName
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.cnic}
+                onChange={(e) => handleEditChange("cnic", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.cnic
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.address}
+                onChange={(e) => handleEditChange("address", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.address
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.mobile}
+                onChange={(e) => handleEditChange("mobile", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.mobile
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.course}
+                onChange={(e) => handleEditChange("course", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.course
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.campusId}
+                onChange={(e) => handleEditChange("campusId", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              campuses.find((c) => c.id === student.campusId)?.name || "—"
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="number"
+                value={editData.age}
+                onChange={(e) => handleEditChange("age", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.age
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <select
+                value={editData.gender}
+                onChange={(e) => handleEditChange("gender", e.target.value)}
+                className="border p-1 rounded w-full"
+              >
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            ) : (
+              student.gender
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.city}
+                onChange={(e) => handleEditChange("city", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.city
+            )}
+          </td>
+
+          <td className="px-3 py-1">
+            {editId === student.id ? (
+              <input
+                type="text"
+                value={editData.province}
+                onChange={(e) => handleEditChange("province", e.target.value)}
+                className="border p-1 rounded w-full"
+              />
+            ) : (
+              student.province
+            )}
+          </td>
+
+          <td className="px-3 py-1 flex gap-2">
+            {editId === student.id ? (
+              <>
+                <button
+                  onClick={saveEdit}
+                  className="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={cancelEdit}
+                  className="bg-gray-400 text-white px-2 py-1 rounded hover:bg-gray-500"
+                >
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => startEdit(student)}
+                  className="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(student.id)}
+                  className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              </>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
     </div>
   );
 }
